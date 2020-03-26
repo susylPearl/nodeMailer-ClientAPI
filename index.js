@@ -28,7 +28,7 @@ app.post("/api/v1", (req, res) => {
     port: 465,
     auth: {
       user: "susylpearl13@gmail.com",
-      pass: "icannotdoanything123"
+      pass: "password"
     }
   });
 
