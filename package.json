@@ -1,26 +1,26 @@
 {
-  "name": "nodemailer-api",
-  "version": "1.1.1",
-  "description": "Setting up a Serverless Contact form in React — using Nodemailer and Express",
+  "name": "personal-portfolio",
+  "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "backend": "nodemon index.js",
+    "frontend": "npm run start --prefix client",
+    "dev": "concurrently \"npm run backend\"  \"npm run start --prefix client\"",
+    "test": "npm run test --prefix client"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/susylPearl/nodeMailerAPI.git"
-  },
-  "author": "chiranjhivi ghimire",
+  "author": "Chiranjhivi",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/susylPearl/nodeMailerAPI/issues"
-  },
-  "homepage": "https://github.com/susylPearl/nodeMailerAPI#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "cookie-parser": "^1.4.4",
     "express": "^4.17.1",
-    "nodemailer": "^6.4.6"
+    "nodemailer": "^6.3.0"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.2",
+    "nodemon": "^1.19.2"
   }
 }

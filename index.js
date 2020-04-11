@@ -1,52 +1,12 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const nodemailer = require("nodemailer");
+const express = require('express');
+const app = express();
+const route = require("./route");
 const cors = require("cors");
 
-const app = express();
-
-const port = 4444;
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
+const port = process.env.PORT || 3001;
 app.use(cors());
+app.use("/api", route);
 
-app.listen(port, () => {
-  console.log("We are live on port 4444");
-});
-
-app.get("/", (req, res) => {
-  res.send("Welcome to my api");
-});
-
-app.post("/api/v1", (req, res) => {
-  var data = req.body;
-
-  var smtpTransport = nodemailer.createTransport({
-    service: "Gmail",
-    port: 465,
-    auth: {
-      user: "susylpearl13@gmail.com",
-      pass: "password"
-    }
-  });
-
-  var mailOptions = {
-    from: data.email,
-    to: "susylpearl13@gmail.com",
-    subject: data.contactSubject,
-    html: `<p>${data.contactName}</p>
-          <p>${data.contactEmail}</p>
-          <p>${data.contactMessage}</p>`
-  };
-
-  smtpTransport.sendMail(mailOptions, (error, response) => {
-    if (error) {
-      res.send(error);
-    } else {
-      res.send("Success");
-    }
-    smtpTransport.close();
-  });
-});
+app.listen(port,  () => {
+    console.log( `Server Running at ${port}`);
+})
